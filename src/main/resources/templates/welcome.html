@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<html xmlns:form="http://www.w3.org/1999/html">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +7,10 @@
 </head>
 <body>
     <form:form action="Operate" method="post">
-        <input type="submit" class="button" value="PUSH">
-        <input type="submit" class="button" value="POP">
-        <input type="submit" class="button" value="VIEW">
-        <input type="submit" class="button" value="RESET">
+        <input type="submit" name="push" value="PUSH">
+        <input type="submit" name="pop" value="POP">
+        <input type="submit" name="view" value="VIEW">
+        <input type="submit" name="delete" value="RESET">
     </form:form>
 </body>
 </html>
