@@ -1,57 +1,39 @@
 package com.example.stack;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-
-import javax.servlet.http.HttpSession;
-import java.util.Random;
-import java.util.Stack;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class StackController {
 
-	static Stack<Integer> integerStack = new Stack<>();
-	static Random random = new Random();
-
-	@GetMapping("/")
-	public String stackFormIndex(HttpSession httpSession) {
-		return "stack";
+	@RequestMapping("/showForm")
+	public String stackForm() {
+		return "welcome";
 	}
 
-	@PutMapping("/stack")
-	public void doPush(@ModelAttribute StackController stackController) {
-		for (int i = 0; i < 10; i++) {
-			int j = random.nextInt(100);
-			integerStack.push(j);
-		}
-		System.out.println(integerStack);
+	@RequestMapping(value = "/Operate", params = "push", method = RequestMethod.PUT)
+	public String push(@ModelAttribute StackApp stackApp) {
+		stackApp.doPush();
+		return "welcome";
 	}
 
-	@GetMapping("/stack")
-	public void doView() {
-		if (integerStack.isEmpty()) {
-			System.out.println("Stack is empty");
-		} else {
-			System.out.println(integerStack);
-		}
+	@RequestMapping(value = "/Operate", params = "pop", method = RequestMethod.POST)
+	public String pop(@ModelAttribute StackApp stackApp) {
+		stackApp.doPop();
+		return "welcome";
 	}
 
-	@PostMapping("/stack")
-	public void doPop() {
-		int value = integerStack.pop();
-		System.out.println(value);
+	@RequestMapping(value = "/Operate", params = "view", method = RequestMethod.GET)
+	public String view(@ModelAttribute StackApp stackApp) {
+		stackApp.doView();
+		return "welcome";
 	}
 
-	@DeleteMapping("/stack")
-	public void doReset() {
-		integerStack.clear();
-		if (integerStack.isEmpty()) {
-			System.out.println("Stack is cleared");
-		}
-		System.out.println(integerStack);
+	@RequestMapping(value = "/Operate", params = "reset", method = RequestMethod.DELETE)
+	public String reset(@ModelAttribute StackApp stackApp) {
+		stackApp.doReset();
+		return "welcome";
 	}
 }
