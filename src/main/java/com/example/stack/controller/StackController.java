@@ -1,5 +1,6 @@
-package com.example.stack;
+package com.example.stack.controller;
 
+import com.example.stack.model.StackApp;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
