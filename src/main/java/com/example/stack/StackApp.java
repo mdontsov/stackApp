@@ -3,12 +3,12 @@ package com.example.stack;
 import java.util.Random;
 import java.util.Stack;
 
-public class StackApp {
+class StackApp {
 
-	static Stack<Integer> integerStack = new Stack<>();
-	static Random random = new Random();
+	private Stack<Integer> integerStack = new Stack<>();
+	private Random random = new Random();
 
-	public void doPush() {
+	void doPush() {
 		for (int i = 0; i < 10; i++) {
 			int j = random.nextInt(100);
 			integerStack.push(j);
@@ -16,7 +16,7 @@ public class StackApp {
 		}
 	}
 
-	public void doView() {
+	void doView() {
 		if (integerStack.isEmpty()) {
 			System.out.println("Stack is empty");
 		} else {
@@ -24,12 +24,12 @@ public class StackApp {
 		}
 	}
 
-	public void doPop() {
+	void doPop() {
 		int value = integerStack.pop();
 		System.out.println(value);
 	}
 
-	public void doReset() {
+	void doReset() {
 		integerStack.clear();
 		if (integerStack.isEmpty()) {
 			System.out.println("Stack is cleared");
