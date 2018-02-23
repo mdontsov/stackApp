@@ -19,7 +19,7 @@ public class StackController {
 	@RequestMapping(value = "/Operate", params = "push", method = RequestMethod.PUT)
 	public String push(@ModelAttribute StackApp stackApp) {
 		stackApp.doPush();
-		return "welcome";
+		return "/";
 	}
 
 	@RequestMapping(value = "/Operate", params = "pop", method = RequestMethod.POST)
