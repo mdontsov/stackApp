@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:form="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>stack</title>
 </head>
 <body>
-    <form:form action="Operate" method="post">
+    <form:form action="Operate" th:object="${welcome}" method="post">
         <input type="submit" name="push" value="PUSH">
         <input type="submit" name="pop" value="POP">
         <input type="submit" name="view" value="VIEW">
