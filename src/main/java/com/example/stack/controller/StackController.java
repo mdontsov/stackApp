@@ -1,6 +1,7 @@
 package com.example.stack.controller;
 
 import com.example.stack.model.StackApp;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,26 +17,26 @@ public class StackController {
 		return "welcome";
 	}
 
-	@RequestMapping(value = "/", params = "push", method = RequestMethod.POST)
-	public String push(@ModelAttribute StackApp stackApp) {
+	@RequestMapping(params = "push", method = RequestMethod.PUT)
+	public String push(@ModelAttribute StackApp stackApp, HttpRequest request) {
 		stackApp.doPush();
 		return "welcome";
 	}
 
-	@RequestMapping(value = "/", params = "pop", method = RequestMethod.POST)
-	public String pop(@ModelAttribute StackApp stackApp) {
+	@RequestMapping(params = "pop", method = RequestMethod.GET)
+	public String pop(@ModelAttribute StackApp stackApp, HttpRequest request) {
 		stackApp.doPop();
 		return "welcome";
 	}
 
-	@RequestMapping(value = "/", params = "view", method = RequestMethod.POST)
-	public String view(@ModelAttribute StackApp stackApp) {
+	@RequestMapping(params = "view", method = RequestMethod.GET)
+	public String view(@ModelAttribute StackApp stackApp, HttpRequest request) {
 		stackApp.doView();
 		return "welcome";
 	}
 
-	@RequestMapping(value = "/", params = "reset", method = RequestMethod.POST)
-	public String reset(@ModelAttribute StackApp stackApp) {
+	@RequestMapping(params = "reset", method = RequestMethod.DELETE)
+	public String reset(@ModelAttribute StackApp stackApp, HttpRequest request) {
 		stackApp.doReset();
 		return "welcome";
 	}

@@ -12,8 +12,8 @@ public class StackApp {
 		for (int i = 0; i < 10; i++) {
 			int j = random.nextInt(100);
 			integerStack.push(j);
-			System.out.println(integerStack);
 		}
+		System.out.println(integerStack);
 	}
 
 	public void doView() {
