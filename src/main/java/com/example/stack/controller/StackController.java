@@ -1,7 +1,6 @@
 package com.example.stack.controller;
 
 import com.example.stack.model.StackApp;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,20 +22,20 @@ public class StackController {
 		return "welcome";
 	}
 
-	@RequestMapping(params = "pop", method = RequestMethod.GET)
-	public String pop(@ModelAttribute StackApp stackApp, HttpRequest request) {
+	@RequestMapping(value = "/", params = "pop", method = RequestMethod.POST)
+	public String pop(@ModelAttribute StackApp stackApp) {
 		stackApp.doPop();
 		return "welcome";
 	}
 
-	@RequestMapping(params = "view", method = RequestMethod.GET)
-	public String view(@ModelAttribute StackApp stackApp, HttpRequest request) {
+	@RequestMapping(value = "/", params = "view", method = RequestMethod.POST)
+	public String view(@ModelAttribute StackApp stackApp) {
 		stackApp.doView();
 		return "welcome";
 	}
 
-	@RequestMapping(params = "reset", method = RequestMethod.DELETE)
-	public String reset(@ModelAttribute StackApp stackApp, HttpRequest request) {
+	@RequestMapping(value = "/", params = "reset", method = RequestMethod.POST)
+	public String reset(@ModelAttribute StackApp stackApp) {
 		stackApp.doReset();
 		return "welcome";
 	}
