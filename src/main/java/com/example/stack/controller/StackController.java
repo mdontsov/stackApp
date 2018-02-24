@@ -16,25 +16,26 @@ public class StackController {
 		return "welcome";
 	}
 
-	@RequestMapping(value = "/Operate", params = "push", method = RequestMethod.PUT)
+	@RequestMapping(params = "push", method = RequestMethod.PUT)
 	public String push(@ModelAttribute StackApp stackApp) {
 		stackApp.doPush();
+		System.out.println("TRUE");
 		return "/";
 	}
 
-	@RequestMapping(value = "/Operate", params = "pop", method = RequestMethod.POST)
+	@RequestMapping(value = "/operate", params = "pop", method = RequestMethod.POST)
 	public String pop(@ModelAttribute StackApp stackApp) {
 		stackApp.doPop();
 		return "welcome";
 	}
 
-	@RequestMapping(value = "/Operate", params = "view", method = RequestMethod.GET)
+	@RequestMapping(value = "/operate", params = "view", method = RequestMethod.GET)
 	public String view(@ModelAttribute StackApp stackApp) {
 		stackApp.doView();
 		return "welcome";
 	}
 
-	@RequestMapping(value = "/Operate", params = "reset", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/operate", params = "reset", method = RequestMethod.DELETE)
 	public String reset(@ModelAttribute StackApp stackApp) {
 		stackApp.doReset();
 		return "welcome";

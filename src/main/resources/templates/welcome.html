@@ -5,7 +5,7 @@
     <title>stack</title>
 </head>
 <body>
-    <form action="#" th:action="@{/welcome}" th:object="${welcome}" method="post">
+    <form th:action="@{/}" th:object="${welcome}" method="post">
         <input type="submit" name="push" value="PUSH"/>
         <input type="submit" name="pop" value="POP"/>
         <input type="submit" name="view" value="VIEW"/>
