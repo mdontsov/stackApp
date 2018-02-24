@@ -17,8 +17,8 @@ public class StackController {
 		return "welcome";
 	}
 
-	@RequestMapping(params = "push", method = RequestMethod.PUT)
-	public String push(@ModelAttribute StackApp stackApp, HttpRequest request) {
+	@RequestMapping(value = "/", params = "push", method = RequestMethod.POST)
+	public String push(@ModelAttribute StackApp stackApp) {
 		stackApp.doPush();
 		return "welcome";
 	}
