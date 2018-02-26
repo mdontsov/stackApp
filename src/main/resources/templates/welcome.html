@@ -5,14 +5,11 @@
     <title>stack</title>
 </head>
 <body>
-    <form action="#" th:action="@{/}" th:object="${stackObject}" method="post">
-        <input type="submit" class="button" name="push" value="PUSH"/>
-        <input type="submit" class="button" name="peek" value="PEEK"/>
-        <input type="submit" class="button" name="view" value="VIEW"/>
-        <input type="submit" class="button" name="delete" value="RESET"/>
-    </form>
-    <fieldset>
-        <div></div>
-    </fieldset>
+<form action="#" th:action="@{/}" th:object="${stackObject}" method="post">
+    <input type="submit" class="button" name="push" value="PUSH"/>
+    <input type="submit" class="button" name="peek" value="PEEK"/>
+    <input type="submit" class="button" name="view" value="VIEW"/>
+    <input type="submit" class="button" name="delete" value="RESET"/>
+</form>
 </body>
 </html>

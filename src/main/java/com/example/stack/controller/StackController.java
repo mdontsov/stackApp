@@ -4,50 +4,70 @@ import com.example.stack.OperationService;
 import com.example.stack.model.StackObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @SessionAttributes("stackObject")
 public class StackController {
 
-	@Autowired
-	private OperationService operationService;
+    @Autowired
+    private OperationService operationService;
 
-	@ModelAttribute("stackObject")
-	public StackObject setStackForm() {
-		return new StackObject();
-	}
+    @ModelAttribute("stackObject")
+    public StackObject setStackForm() {
+        return new StackObject();
+    }
 
-	@RequestMapping("/")
-	public String stackObject() {
-		return "welcome";
-	}
+    @RequestMapping("/")
+    public String stackObject() {
+        return "welcome";
+    }
 
-	@RequestMapping(value = "/")
-	public String push(@ModelAttribute("stackObject") StackObject stackObject) {
-		StackObject stackObject1 = operationService.operate("push");
+    @RequestMapping(value = "/", params = "push", method = RequestMethod.POST)
+    public String push(@ModelAttribute("stackObject") StackObject stackObject) {
 
-		return "welcome";
-	}
+        /**
+         * Stack is populated but neither attached to a form nor transferred to the next request
+         * Implementation is wrong
+         **/
+        StackObject stackObject1 = operationService.operate("push");
 
-	@RequestMapping(value = "/", params = "peek", method = RequestMethod.POST)
-	public String peek(@ModelAttribute("stackObject") StackObject stackObject) {
+        return "welcome";
+    }
 
-		return "welcome";
-	}
+    @RequestMapping(value = "/", params = "peek", method = RequestMethod.POST)
+    public String peek(@ModelAttribute("stackObject") StackObject stackObject) {
 
-	@RequestMapping(value = "/", params = "view", method = RequestMethod.GET)
-	public String view(@ModelAttribute("stackObject") StackObject stackObject) {
+        /**
+         * EmptyStackException is caused below
+         * Implementation is wrong
+         **/
+        StackObject stackObject1 = operationService.operate("peek");
 
-		return "welcome";
-	}
+        return "welcome";
+    }
 
-	@RequestMapping(value = "/", params = "reset", method = RequestMethod.DELETE)
-	public String reset(@ModelAttribute("stackObject") StackObject stackObject) {
+    @RequestMapping(value = "/", params = "view", method = RequestMethod.POST)
+    public String view(@ModelAttribute("stackObject") StackObject stackObject) {
 
-		return "welcome";
-	}
+        /**
+         * EmptyStackException is caused below
+         * Implementation is wrong
+         **/
+        StackObject stackObject1 = operationService.operate("view");
+
+        return "welcome";
+    }
+
+    @RequestMapping(value = "/", params = "reset", method = RequestMethod.POST)
+    public String reset(@ModelAttribute("stackObject") StackObject stackObject) {
+
+        /**
+         * EmptyStackException is caused below
+         * Implementation is wrong
+         **/
+        StackObject stackObject1 = operationService.operate("reset");
+
+        return "welcome";
+    }
 }
