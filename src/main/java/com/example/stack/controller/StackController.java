@@ -1,6 +1,8 @@
 package com.example.stack.controller;
 
-import com.example.stack.model.StackApp;
+import com.example.stack.OperationService;
+import com.example.stack.model.StackObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,40 +10,44 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes("stackApp")
+@SessionAttributes("stackObject")
 public class StackController {
 
-	@ModelAttribute("stackApp")
-	public StackApp setStackForm() {
-		return new StackApp();
+	@Autowired
+	private OperationService operationService;
+
+	@ModelAttribute("stackObject")
+	public StackObject setStackForm() {
+		return new StackObject();
 	}
 
 	@RequestMapping("/")
-	public String stackForm() {
+	public String stackObject() {
 		return "welcome";
 	}
 
-	@RequestMapping(value = "/", params = "push", method = RequestMethod.PUT)
-	public String push(@ModelAttribute("stackApp") StackApp stackApp) {
-		stackApp.doPush();
+	@RequestMapping(value = "/")
+	public String push(@ModelAttribute("stackObject") StackObject stackObject) {
+		StackObject stackObject1 = operationService.operate("push");
+
 		return "welcome";
 	}
 
-	@RequestMapping(value = "/", params = "pop", method = RequestMethod.POST)
-	public String pop(@ModelAttribute("stackApp") StackApp stackApp) {
-		stackApp.doPop();
+	@RequestMapping(value = "/", params = "peek", method = RequestMethod.POST)
+	public String peek(@ModelAttribute("stackObject") StackObject stackObject) {
+
 		return "welcome";
 	}
 
 	@RequestMapping(value = "/", params = "view", method = RequestMethod.GET)
-	public String view(@ModelAttribute("stackApp") StackApp stackApp) {
-		stackApp.doView();
+	public String view(@ModelAttribute("stackObject") StackObject stackObject) {
+
 		return "welcome";
 	}
 
 	@RequestMapping(value = "/", params = "reset", method = RequestMethod.DELETE)
-	public String reset(@ModelAttribute("stackApp") StackApp stackApp) {
-		stackApp.doReset();
+	public String reset(@ModelAttribute("stackObject") StackObject stackObject) {
+
 		return "welcome";
 	}
 }
